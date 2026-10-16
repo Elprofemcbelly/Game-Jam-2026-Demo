@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://i3en0r2r1umo"]
+
+[ext_resource type="Texture2D" uid="uid://dphledsg3j3wp" path="res://PNG/cave_entrance.png" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dkbaitc13l8do" path="res://node_2d.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://bvik3yrggcu1w" path="res://Knight_1/Idle.png" id="2_epypp"]
+[ext_resource type="Script" uid="uid://bpnu1fg8iroee" path="res://jugador_1.gd" id="3_0hol4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in5sg"]
+size = Vector2(389, 107.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4bly"]
+size = Vector2(422, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("2_epypp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("2_epypp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("2_epypp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("2_epypp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in5sg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snpar"]
+size = Vector2(62, 110)
+
+[node name="Node2D" type="Node2D" unique_id=1119503579]
+script = ExtResource("1_epypp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2146193810]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=133587192]
+position = Vector2(574.5, 324.5)
+scale = Vector2(5.9947915, 5.0859375)
+texture = ExtResource("1_0e48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1478719228]
+position = Vector2(195, 597)
+shape = SubResource("RectangleShape2D_in5sg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=802344933]
+position = Vector2(940, 599.5)
+shape = SubResource("RectangleShape2D_f4bly")
+
+[node name="Jugador_1" type="CharacterBody2D" parent="." unique_id=10165047]
+script = ExtResource("3_0hol4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jugador_1" unique_id=370054480]
+position = Vector2(127, 435.5)
+scale = Vector2(1.84375, 1.6640625)
+sprite_frames = SubResource("SpriteFrames_in5sg")
+animation = &"Idle"
+frame_progress = 0.09929605
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador_1" unique_id=1545036941]
+position = Vector2(67, 485)
+shape = SubResource("RectangleShape2D_snpar")
