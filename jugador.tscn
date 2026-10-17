@@ -55,6 +55,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snpar"]
 size = Vector2(62, 110)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4bly"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in5sg"]
+
 [node name="Jugador_1" type="CharacterBody2D" unique_id=1548681931]
 script = ExtResource("1_omvyu")
 
@@ -67,3 +71,23 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1915794789]
 position = Vector2(1, -56)
 shape = SubResource("RectangleShape2D_snpar")
+
+[node name="Posicion_pies" type="Marker2D" parent="." unique_id=1695137968]
+
+[node name="Area2D" type="Area2D" parent="Posicion_pies" unique_id=1285730609]
+
+[node name="Colision_Pies" type="CollisionShape2D" parent="Posicion_pies/Area2D" unique_id=1498685024]
+rotation = -1.5570948
+scale = Vector2(0.6351018, 1)
+shape = SubResource("CapsuleShape2D_f4bly")
+
+[node name="Posicion_manos" type="Marker2D" parent="." unique_id=2032437509]
+position = Vector2(0, -102)
+
+[node name="Area2D" type="Area2D" parent="Posicion_manos" unique_id=2026093045]
+
+[node name="Colision_Manos" type="CollisionShape2D" parent="Posicion_manos/Area2D" unique_id=320314624]
+position = Vector2(0, -9)
+rotation = -1.580578
+scale = Vector2(0.5344392, 0.9752755)
+shape = SubResource("CapsuleShape2D_in5sg")

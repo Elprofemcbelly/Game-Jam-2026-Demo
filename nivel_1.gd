@@ -1,5 +1,8 @@
 extends Node2D
 const JUGADOR= preload("res://jugador.tscn")
+var jugador1
+var jugador2
+@onready var Posicion_manos: Area2D = $Posicion_manos 
 @onready var spawn_jugador_1: Node2D = $SpawnPlayer1
 @onready var spawn_jugador_2: Node2D = $SpawnPlayer2
 # Called when the node enters the scene tree for the first time.
@@ -11,15 +14,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	#if Input.is_action_pressed("jugador_1_derecha"):
-	#	$Jugador_1.position.x += 1
-	#if Input.is_action_pressed("jugador_1_izquierda"):
-	#	$Jugador_1.position.x -= 1
-	#if Input.is_action_pressed("jugador_1_arriba"):
-	#	$Jugador_1.position.y -= 1
-	#if Input.is_action_pressed("jugador_1_abajo"):
-	#	$Jugador_1.position.y += 1
-		
 		
 func spawnear_jugador(n_jugador: int):
 	var spawn
@@ -32,3 +26,16 @@ func spawnear_jugador(n_jugador: int):
 	instancia_jugador.inicializar(n_jugador, spawn)
 	
 	add_child(instancia_jugador)
+	match n_jugador:
+		1:
+			jugador1 = instancia_jugador
+			jugador1.esperando_conexion.connect(_on_esperando_conexion)
+		2:
+			jugador2 = instancia_jugador
+
+func _on_esperando_conexion(id):
+	poder_subirse(id)
+
+func poder_subirse(id):
+	if jugador1.Posicion_Pies_Area2D.Colision_Pies:
+		pass
