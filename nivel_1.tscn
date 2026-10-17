@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://7jnm4hjuf6e7"]
 
 [ext_resource type="Script" uid="uid://l54h7kcej8v1" path="res://nivel_1.gd" id="1_eciuy"]
-[ext_resource type="Texture2D" uid="uid://dphledsg3j3wp" path="res://PNG/cave_entrance.png" id="2_2lask"]
+[ext_resource type="Texture2D" uid="uid://brwuqi2b8eieu" path="res://fondo.webp" id="2_eciuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_in5sg"]
-size = Vector2(389, 107.75)
+size = Vector2(1146, 107.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4bly"]
-size = Vector2(422, 97)
+size = Vector2(1136, 225.5)
 
 [node name="Nivel1" type="Node2D" unique_id=1119503579]
 script = ExtResource("1_eciuy")
@@ -16,15 +16,15 @@ script = ExtResource("1_eciuy")
 
 [node name="Fondo" type="Sprite2D" parent="StaticBody2D" unique_id=133587192]
 position = Vector2(574.5, 324.5)
-scale = Vector2(5.9947915, 5.0859375)
-texture = ExtResource("2_2lask")
+scale = Vector2(2.93, 2.312)
+texture = ExtResource("2_eciuy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1478719228]
-position = Vector2(195, 597)
+position = Vector2(577, 704)
 shape = SubResource("RectangleShape2D_in5sg")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=802344933]
-position = Vector2(940, 599.5)
+position = Vector2(578, 116.25)
 shape = SubResource("RectangleShape2D_f4bly")
 
 [node name="SpawnPlayer1" type="Marker2D" parent="." unique_id=735834409]
