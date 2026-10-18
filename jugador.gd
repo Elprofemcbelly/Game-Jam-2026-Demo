@@ -2,13 +2,16 @@ extends CharacterBody2D
 
 var direction_x
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -800.0
 var id_jugador: int
 signal esperando_conexion(id_jugador)
 #@onready var _animacion = $AnimationPlayer
 var esperando: bool
 var conectado_abajo: bool
 var conectado_arriba: bool
+var posicion_abajo
+var jugador_abajo
+var jugador_arriba
 
 
 
@@ -54,8 +57,13 @@ func aplicar_controles_movimiento():
 func _physics_process(delta: float) -> void:
 	normalizar_anim_y_esperando()
 	aplicar_gravedad(delta)
-	if conectado_arriba != true:
+	if not conectado_arriba:
 		aplicar_controles_movimiento()
+	aplicar_controles_ataque()
+	if conectado_arriba:
+		velocity.x=0
+		velocity.y=0
+		position=jugador_abajo.get_node("Posicion_manos").global_position + Vector2(0,-10)
 	
 	fijarse_si_conexion()
 	if direction_x: #movimiento
@@ -63,6 +71,29 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-func 
 	
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "Pies" and esperando==true:
+		area.owner.conectado_arriba=true
+		area.owner.jugador_abajo=self
+		jugador_arriba=area.owner
+		add_collision_exception_with(jugador_arriba)
+		area.owner.posicion_abajo=position+Vector2(0, -200)
+		print("Contacto")
+		print(conectado_arriba)
+		print(conectado_abajo)
+		print(area.owner.conectado_arriba)
+		
+func ataque():
+	if not $AnimatedSprite2D.animation=="ataque":
+		$AnimatedSprite2D.play("ataque")
+	$Colision_Ataque.set_deferred("disabled", false)
+	await get_tree().create_timer(0.05).timeout
+	$Colision_Ataque.set_deferred("disabled", true)
+	
+func aplicar_controles_ataque():
+	if Input.is_action_just_pressed("jugador_1_ataque"):
+				ataque()
