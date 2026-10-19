@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://i3en0r2r1umo"]
 
 [ext_resource type="Texture2D" uid="uid://dphledsg3j3wp" path="res://PNG/cave_entrance.png" id="1_0e48y"]
-[ext_resource type="Script" uid="uid://dkbaitc13l8do" path="res://node_2d.gd" id="1_epypp"]
+[ext_resource type="Script" uid="uid://dkbaitc13l8do" path="res://Node2D.gd" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://bvik3yrggcu1w" path="res://Knight_1/Idle.png" id="2_epypp"]
 [ext_resource type="Script" uid="uid://bpnu1fg8iroee" path="res://jugador_1.gd" id="3_0hol4"]
 
